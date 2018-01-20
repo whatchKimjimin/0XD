@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="co.kr.soboat.mapper.BoatsMapper">
+	<select id="positionSearchBoats" parameterType="String" resultType="hashmap">
+		SELECT id , boatName , boatCategory , position FROM Boats WHERE position LIKE CONCAT('%',#{position},'%')
+	</select>
+
+	<insert id="insertBoat" parameterType="hashmap">
+		INSERT Boats(boatName , boatCategory , notice , lat , lng , position , Users_id)
+		VALUES( #{boatName} , #{boatCategory} , #{notice} , #{lat} , #{lng} , #{position} , #{Users_id}  )
+	</insert>
+	
+	
+	<delete id="deleteBoat" parameterType="int">
+		DELETE FROM Boats WHERE id = #{BOATS_PM_KEY}
+	</delete>
+</mapper>

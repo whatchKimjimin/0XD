@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="co.kr.soboat.mapper.UsersMapper">
+	<insert id="insertUser" parameterType="hashmap">
+		INSERT Users(userName , userEmail , userPassword , userBirth)
+		VALUES ( #{user_name} , #{user_email} , #{user_password} , #{user_birth} )
+	</insert>
+	
+	<select id="userIdCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM Users WHERE userEmail = #{USER_ID}
+	</select>
+	<select id="userPwCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM Users WHERE id = #{USER_PM_KEY} AND userPassword = #{USER_PWD}
+	</select>
+	
+	<select id="getUserPmKey" resultType="String">
+		SELECT id FROM Users WHERE userEmail = #{USER_EMAIL}
+	</select>
+	<select id="getUserData" parameterType="int" resultType="hashmap">
+		SELECT userEmail , userName , userBirth FROM Users WHERE id = #{USER_PM_KEY} 
+	</select>
+	
+</mapper>
