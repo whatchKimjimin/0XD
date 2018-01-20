@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="co.kr.soboat.mapper.RentalMapper">
+	<select id="boatRentalCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM BoatsRental
+		WHERE ( ( start_date between #{start_date} and #{end_date} or  end_date between #{start_date} and #{end_date} )
+		OR ( start_date <![CDATA[ <= ]]> #{start_date} and end_date <![CDATA[ >= ]]> #{end_date} ) ) 
+		AND Boats_id = #{Boats_id}
+	</select>
+	
+	
+	<insert id="boatRental" parameterType="hashmap">
+		INSERT INTO BoatsRental
+		(Users_id , Boats_id , start_date , end_date)
+		VALUES
+		( #{Users_id} , #{Boats_id} , #{start_date} , #{end_date} )
+	</insert>
+</mapper>

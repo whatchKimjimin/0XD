@@ -23,7 +23,7 @@ import co.kr.soboat.service.BoatsService;
 @Controller
 @RequestMapping(value = "/boat")
 public class BoatController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BoatController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

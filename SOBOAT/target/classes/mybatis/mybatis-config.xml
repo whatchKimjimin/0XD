@@ -7,5 +7,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mappers >
 		<mapper resource="/mybatis/mapper-users.xml"/>
 		<mapper resource="/mybatis/mapper-boats.xml"/>
+		<mapper resource="/mybatis/mapper-rental.xml"/>
     </mappers >
 </configuration>
