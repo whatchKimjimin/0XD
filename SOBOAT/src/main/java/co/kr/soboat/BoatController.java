@@ -23,7 +23,7 @@ import co.kr.soboat.service.BoatsService;
 @Controller
 @RequestMapping(value = "/boat")
 public class BoatController {
-private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -46,11 +46,16 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 		return boatsService.deleteBoat(USER_PM_KEY);
 	}
 	
-	@RequestMapping(value = "/{KEYWORD}",produces="application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/search/{KEYWORD}",produces="application/json", method = RequestMethod.GET)
 	public @ResponseBody Map<String, String> insertBoat(@PathVariable(value="KEYWORD") String KEYWORD) throws JsonProcessingException {
 		System.err.println("BOATS SEARCH");
 		return boatsService.positionSearchBoat(KEYWORD);
 	}
 	
+	@RequestMapping(value = "/{BOATS_ID}",produces="application/json", method = RequestMethod.GET)
+	public @ResponseBody Map<String, String> detailBoat(@PathVariable(value="BOATS_ID") int BOATS_ID) throws JsonProcessingException {
+		System.out.println("BOAT DETAIL");
+		return boatsService.boatDetail(BOATS_ID);
+	}
 	
 }

@@ -38,4 +38,9 @@ public class BoatsDaoImpl implements BoatsDao{
 	public List<Map<String, String>> positionSearchBoat(String position) {
 		return sqlSession.selectList("positionSearchBoats",position);
 	}
+
+	@Override
+	public Map<String, String> boatDetail(int BOATS_ID) {
+		return sqlSession.selectOne("boatDetail",BOATS_ID);
+	}
 }

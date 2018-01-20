@@ -69,6 +69,25 @@ public class BoatsServiceImpl implements BoatsService{
 		return result;
 	}
 
+	@Override
+	public Map<String, String> boatDetail(int BOATS_ID) throws JsonProcessingException {
+		// RESULT 
+		this.result = new HashMap<String , String>();
+		// JACKSON
+		ObjectMapper mapper = new ObjectMapper();
+		// BOAT DATA
+		Map<String , String> boatData = boatsDao.boatDetail(BOATS_ID);
+		
+		if( boatData != null ) {
+			result.put("success", "true");
+			result.put("boatData", mapper.writeValueAsString(boatData));
+		} else {
+			result.put("success", "false");
+		}
+		
+		return result;
+	}
+
 	
 	
 	

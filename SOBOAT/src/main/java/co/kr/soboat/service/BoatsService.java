@@ -14,5 +14,6 @@ public interface BoatsService {
 	public Map<String , String> deleteBoat(int BOATS_PM_KEY);
 	// POSITION SEARCH BOATS
 	public Map<String , String> positionSearchBoat(String position) throws JsonProcessingException;
-
+	// DETAIL BOAT
+	public Map<String , String> boatDetail(int BOATS_ID) throws JsonProcessingException;
 }

@@ -7,7 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="positionSearchBoats" parameterType="String" resultType="hashmap">
 		SELECT id , boatName , boatCategory , position FROM Boats WHERE position LIKE CONCAT('%',#{position},'%')
 	</select>
-
+	<select id="boatDetail" parameterType="int" resultType="hashmap">
+		SELECT Boats.id , boats.boatName , boats.boatCategory , boats.position , boats.lat , boats.lng , boats.notice , Users.userName 
+		FROM Boats JOIN Users
+		ON Boats.Users_id = Users.id
+		WHERE Boats.id = #{BOATS_ID}
+	</select>
+	
 	<insert id="insertBoat" parameterType="hashmap">
 		INSERT Boats(boatName , boatCategory , notice , lat , lng , position , Users_id)
 		VALUES( #{boatName} , #{boatCategory} , #{notice} , #{lat} , #{lng} , #{position} , #{Users_id}  )
